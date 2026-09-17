@@ -2,7 +2,7 @@
 // writing raw fetch() calls scattered across the codebase. Makes it
 // easy to change the base URL or add auth headers in one place later.
 
-const API_BASE_URL = 'https://ums-backend-xkyp.onrender.com/api';
+const API_BASE_URL = 'http://localhost:5000/api';
 
 async function apiRequest(endpoint, method = 'GET', body = null) {
   const headers = { 'Content-Type': 'application/json' };
@@ -25,4 +25,8 @@ async function apiRequest(endpoint, method = 'GET', body = null) {
 
 async function loginRequest(email, password) {
   return apiRequest('/auth/login', 'POST', { email, password });
+}
+
+async function registerRequest({ name, email, password, role }) {
+  return apiRequest('/auth/register', 'POST', { name, email, password, role });
 }
