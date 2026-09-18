@@ -47,3 +47,36 @@ button:disabled { background: #9ab8f0; cursor: not-allowed; }
 .error { color: #dc2626; font-size: 0.85rem; margin-bottom: 1rem; display: none; }
 
 .success { color: #16a34a; font-size: 0.85rem; margin-bottom: 1rem; display: none; }
+
+.card-wide { width: 640px; }
+
+table { width: 100%; border-collapse: collapse; margin-top: 1rem; font-size: 0.9rem; }
+
+th, td { text-align: left; padding: 0.5rem 0.6rem; border-bottom: 1px solid #eee; }
+
+th { color: #555; font-weight: 600; }
+
+.inline-form { display: flex; gap: 0.5rem; align-items: flex-end; margin-bottom: 0.5rem; }
+
+.inline-form input { margin-bottom: 0; }
+
+.inline-form > div { flex: 1; }
+
+.btn-small {
+  padding: 0.4rem 0.7rem;
+  font-size: 0.8rem;
+  width: auto;
+  border-radius: 4px;
+  border: none;
+  cursor: pointer;
+  margin-right: 0.3rem;
+}
+
+.btn-edit { background: #f0ad4e; color: #fff; }
+
+.btn-delete { background: #dc2626; color: #fff; }
+
+.btn-save { background: #16a34a; color: #fff; }
+
+nav.topnav { margin-bottom: 1rem; font-size: 0.85rem; }
+nav.topnav a { margin-right: 1rem; color: #2563eb; text-decoration: none; }
