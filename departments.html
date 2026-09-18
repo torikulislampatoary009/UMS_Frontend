@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>UMS - Departments</title>
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+  <div class="card card-wide">
+    <nav class="topnav">
+      <a href="login.html">Login</a>
+      <a href="register.html">Create User</a>
+      <a href="departments.html">Departments</a>
+    </nav>
+
+    <h1>Departments</h1>
+    <div class="error" id="errorMsg"></div>
+    <div class="success" id="successMsg"></div>
+
+    <form id="addForm" class="inline-form">
+      <div>
+        <label for="newName">Name</label>
+        <input type="text" id="newName" required />
+      </div>
+      <div>
+        <label for="newCode">Code</label>
+        <input type="text" id="newCode" required />
+      </div>
+      <button type="submit" style="width:auto; padding:0.6rem 1rem;">Add</button>
+    </form>
+
+    <table id="deptTable">
+      <thead>
+        <tr><th>ID</th><th>Name</th><th>Code</th><th>Actions</th></tr>
+      </thead>
+      <tbody id="deptTableBody">
+        <!-- rows injected by JS -->
+      </tbody>
+    </table>
+  </div>
+
+  <script src="js/api.js"></script>
+  <script src="js/departments.js"></script>
+</body>
+</html>
