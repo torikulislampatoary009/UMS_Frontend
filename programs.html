@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <title>UMS - Departments</title>
+  <title>UMS - Programs</title>
   <link rel="stylesheet" href="css/style.css" />
 </head>
 <body>
@@ -14,7 +14,7 @@
       <a href="programs.html">Programs</a>
     </nav>
 
-    <h1>Departments</h1>
+    <h1>Programs</h1>
     <div class="error" id="errorMsg"></div>
     <div class="success" id="successMsg"></div>
 
@@ -24,23 +24,33 @@
         <input type="text" id="newName" required />
       </div>
       <div>
-        <label for="newCode">Code</label>
-        <input type="text" id="newCode" required />
+        <label for="newDegree">Degree Level</label>
+        <select id="newDegree" required>
+          <option value="undergraduate">Undergraduate</option>
+          <option value="graduate">Graduate</option>
+          <option value="doctorate">Doctorate</option>
+        </select>
+      </div>
+      <div>
+        <label for="newDuration">Years</label>
+        <input type="number" id="newDuration" min="1" max="10" required />
+      </div>
+      <div>
+        <label for="newDept">Department</label>
+        <select id="newDept" required></select>
       </div>
       <button type="submit" style="width:auto; padding:0.6rem 1rem;">Add</button>
     </form>
 
-    <table id="deptTable">
+    <table id="progTable">
       <thead>
-        <tr><th>ID</th><th>Name</th><th>Code</th><th>Actions</th></tr>
+        <tr><th>ID</th><th>Name</th><th>Degree</th><th>Years</th><th>Department</th><th>Actions</th></tr>
       </thead>
-      <tbody id="deptTableBody">
-        <!-- rows injected by JS -->
-      </tbody>
+      <tbody id="progTableBody"></tbody>
     </table>
   </div>
 
   <script src="js/api.js"></script>
-  <script src="js/departments.js"></script>
+  <script src="js/programs.js"></script>
 </body>
 </html>
