@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <title>UMS - Faculty</title>
+  <title>UMS - Students</title>
   <link rel="stylesheet" href="css/style.css" />
 </head>
 <body>
@@ -17,39 +17,43 @@
       <a href="students.html">Students</a>
     </nav>
 
-    <h1>Faculty Profiles</h1>
+    <h1>Student Profiles</h1>
     <div class="error" id="errorMsg"></div>
     <div class="success" id="successMsg"></div>
 
     <form id="addForm" class="inline-form">
       <div>
-        <label for="newUser">Faculty User</label>
+        <label for="newUser">Student User</label>
         <select id="newUser" required></select>
       </div>
       <div>
-        <label for="newDesignation">Designation</label>
-        <input type="text" id="newDesignation" placeholder="e.g. Assistant Professor" required />
+        <label for="newProgram">Program</label>
+        <select id="newProgram" required></select>
       </div>
       <div>
-        <label for="newDept">Department</label>
-        <select id="newDept" required></select>
+        <label for="newBatch">Batch Year</label>
+        <input type="number" id="newBatch" min="2000" max="2100" required />
+      </div>
+      <div>
+        <label for="newSemester">Semester</label>
+        <input type="number" id="newSemester" min="1" max="20" required />
       </div>
       <button type="submit" style="width:auto; padding:0.6rem 1rem;">Add</button>
     </form>
     <p style="font-size:0.8rem; color:#666;">
-      Only users already registered with the "faculty" role and without an existing profile appear here.
+      Only users already registered with the "student" role and without an existing profile appear here.
       Create the user first on the <a href="register.html">Create User</a> page if they're missing.
     </p>
 
-    <table id="facultyTable">
+    <table id="studentTable">
       <thead>
-        <tr><th>ID</th><th>Name</th><th>Email</th><th>Designation</th><th>Department</th><th>Actions</th></tr>
+        <tr><th>ID</th><th>Name</th><th>Email</th><th>Program</th><th>Batch</th><th>Semester</th><th>Actions</th></tr>
       </thead>
-      <tbody id="facultyTableBody"></tbody>
+      <tbody id="studentTableBody"></tbody>
     </table>
   </div>
 
   <script src="js/api.js"></script>
-  <script src="js/faculty.js"></script>
+  <script src="js/students.js"></script>
 </body>
 </html>
