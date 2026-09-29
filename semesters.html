@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <title>UMS - Courses</title>
+  <title>UMS - Semesters</title>
   <link rel="stylesheet" href="css/style.css" />
 </head>
 <body>
@@ -18,39 +18,35 @@
       <a href="semesters.html">Semesters</a>
     </nav>
 
-    <h1>Courses</h1>
+    <h1>Semesters</h1>
     <div class="error" id="errorMsg"></div>
     <div class="success" id="successMsg"></div>
 
     <form id="addForm" class="inline-form">
       <div>
-        <label for="newCode">Code</label>
-        <input type="text" id="newCode" required />
+        <label for="newName">Name</label>
+        <input type="text" id="newName" placeholder="e.g. Fall 2026" required />
       </div>
       <div>
-        <label for="newTitle">Title</label>
-        <input type="text" id="newTitle" required />
+        <label for="newStart">Start Date</label>
+        <input type="date" id="newStart" required />
       </div>
       <div>
-        <label for="newCredits">Credits</label>
-        <input type="number" id="newCredits" step="0.5" min="0.5" max="12" required />
-      </div>
-      <div>
-        <label for="newDept">Department</label>
-        <select id="newDept" required></select>
+        <label for="newEnd">End Date</label>
+        <input type="date" id="newEnd" required />
       </div>
       <button type="submit" style="width:auto; padding:0.6rem 1rem;">Add</button>
     </form>
 
-    <table id="courseTable">
+    <table id="semesterTable">
       <thead>
-        <tr><th>ID</th><th>Code</th><th>Title</th><th>Credits</th><th>Department</th><th>Actions</th></tr>
+        <tr><th>ID</th><th>Name</th><th>Start</th><th>End</th><th>Current?</th><th>Actions</th></tr>
       </thead>
-      <tbody id="courseTableBody"></tbody>
+      <tbody id="semesterTableBody"></tbody>
     </table>
   </div>
 
   <script src="js/api.js"></script>
-  <script src="js/courses.js"></script>
+  <script src="js/semesters.js"></script>
 </body>
 </html>
