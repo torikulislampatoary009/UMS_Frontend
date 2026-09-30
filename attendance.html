@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <title>UMS - Courses</title>
+  <title>UMS - Attendance</title>
   <link rel="stylesheet" href="css/style.css" />
 </head>
 <body>
@@ -21,39 +21,31 @@
       <a href="attendance.html">Attendance</a>
     </nav>
 
-    <h1>Courses</h1>
+    <h1>Attendance</h1>
     <div class="error" id="errorMsg"></div>
     <div class="success" id="successMsg"></div>
 
-    <form id="addForm" class="inline-form">
+    <form id="filterForm" class="inline-form">
       <div>
-        <label for="newCode">Code</label>
-        <input type="text" id="newCode" required />
+        <label for="sectionSelect">Section</label>
+        <select id="sectionSelect" required></select>
       </div>
       <div>
-        <label for="newTitle">Title</label>
-        <input type="text" id="newTitle" required />
+        <label for="dateInput">Date</label>
+        <input type="date" id="dateInput" required />
       </div>
-      <div>
-        <label for="newCredits">Credits</label>
-        <input type="number" id="newCredits" step="0.5" min="0.5" max="12" required />
-      </div>
-      <div>
-        <label for="newDept">Department</label>
-        <select id="newDept" required></select>
-      </div>
-      <button type="submit" style="width:auto; padding:0.6rem 1rem;">Add</button>
+      <button type="submit" style="width:auto; padding:0.6rem 1rem;">Load Roster</button>
     </form>
 
-    <table id="courseTable">
+    <table id="rosterTable">
       <thead>
-        <tr><th>ID</th><th>Code</th><th>Title</th><th>Credits</th><th>Department</th><th>Actions</th></tr>
+        <tr><th>Student</th><th>Status</th><th>Actions</th></tr>
       </thead>
-      <tbody id="courseTableBody"></tbody>
+      <tbody id="rosterTableBody"></tbody>
     </table>
   </div>
 
   <script src="js/api.js"></script>
-  <script src="js/courses.js"></script>
+  <script src="js/attendance.js"></script>
 </body>
 </html>
