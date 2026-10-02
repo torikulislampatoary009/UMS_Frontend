@@ -5,7 +5,6 @@ const loginBtn = document.getElementById('loginBtn');
 
 form.addEventListener('submit', async (e) => {
   e.preventDefault();
-
   errorMsg.style.display = 'none';
   successMsg.style.display = 'none';
 
@@ -13,24 +12,17 @@ form.addEventListener('submit', async (e) => {
   const password = document.getElementById('password').value;
 
   loginBtn.disabled = true;
-  loginBtn.textContent = 'Logging in...';
+  loginBtn.textContent = 'Signing in...';
 
   try {
     const result = await loginRequest(email, password);
-
     localStorage.setItem('token', result.data.token);
     localStorage.setItem('user', JSON.stringify(result.data.user));
-
-    successMsg.textContent = `Welcome, ${result.data.user.name} (${result.data.user.role})`;
-    successMsg.style.display = 'block';
-
-    // In a full build this would redirect to a role-based dashboard.
-    // For now we just confirm the token/user landed correctly.
+    window.location.href = 'dashboard.html';
   } catch (err) {
     errorMsg.textContent = err.message;
     errorMsg.style.display = 'block';
-  } finally {
     loginBtn.disabled = false;
-    loginBtn.textContent = 'Log In';
+    loginBtn.textContent = 'Sign In';
   }
 });
