@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>UMS — Dashboard</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:wght@500;600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/theme.css" />
+  <link rel="stylesheet" href="css/dashboard.css" />
+</head>
+<body>
+  <div class="error" id="errorMsg"></div>
+
+  <div class="stat-row" id="statRow">
+    <!-- populated by dashboard.js -->
+  </div>
+
+  <h2 style="font-size: 1rem; color: var(--text-muted); font-family: var(--font-body); font-weight: 500; margin-bottom: 0.6rem;">
+    Quick links
+  </h2>
+  <table>
+    <tbody>
+      <tr><td><a href="sections.html">Manage course sections</a></td><td style="color:var(--text-muted);">Assign faculty, rooms, and capacity for a term</td></tr>
+      <tr><td><a href="enrollments.html">Enroll a student</a></td><td style="color:var(--text-muted);">Register a student into a section</td></tr>
+      <tr><td><a href="attendance.html">Take attendance</a></td><td style="color:var(--text-muted);">Mark a section's roster for today</td></tr>
+      <tr><td><a href="exams.html">Enter exam marks</a></td><td style="color:var(--text-muted);">Record grades for a section's exams</td></tr>
+    </tbody>
+  </table>
+
+  <script src="js/api.js"></script>
+  <script src="js/shell.js"></script>
+  <script src="js/dashboard.js"></script>
+</body>
+</html>
