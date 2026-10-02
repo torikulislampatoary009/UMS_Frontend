@@ -2,12 +2,15 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>UMS - Create User</title>
-  <link rel="stylesheet" href="css/style.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:wght@500;600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/theme.css" />
+  <link rel="stylesheet" href="css/dashboard.css" />
 </head>
 <body>
-  <div class="card">
-    <h1>Create Account (Admin only)</h1>
+  <div class="content-inner" style="max-width: 420px;">
     <div class="error" id="errorMsg"></div>
     <div class="success" id="successMsg"></div>
 
@@ -28,13 +31,13 @@
         <option value="student">Student</option>
         <option value="admin">Admin</option>
       </select>
-      <br /><br />
 
-      <button type="submit" id="registerBtn">Create Account</button>
+      <button type="submit" id="registerBtn" class="btn-gold">Create Account</button>
     </form>
   </div>
 
   <script src="js/api.js"></script>
+  <script src="js/shell.js"></script>
   <script src="js/register.js"></script>
 </body>
 </html>
