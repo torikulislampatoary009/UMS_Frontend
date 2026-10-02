@@ -182,3 +182,31 @@ async function markAttendanceRequest({ enrollmentId, date, status }) {
 async function deleteAttendanceRequest(id) {
   return apiRequest(`/attendance/${id}`, 'DELETE');
 }
+
+async function getExams(sectionId) {
+  return apiRequest(`/exams?sectionId=${sectionId}`, 'GET');
+}
+
+async function createExamRequest(payload) {
+  return apiRequest('/exams', 'POST', payload);
+}
+
+async function updateExamRequest(id, payload) {
+  return apiRequest(`/exams/${id}`, 'PUT', payload);
+}
+
+async function deleteExamRequest(id) {
+  return apiRequest(`/exams/${id}`, 'DELETE');
+}
+
+async function getExamRoster(examId) {
+  return apiRequest(`/exams/${examId}/roster`, 'GET');
+}
+
+async function markExamGradeRequest(examId, { enrollmentId, obtainedMarks }) {
+  return apiRequest(`/exams/${examId}/marks`, 'POST', { enrollmentId, obtainedMarks });
+}
+
+async function getGradeSummary(enrollmentId) {
+  return apiRequest(`/exams/summary/${enrollmentId}`, 'GET');
+}
