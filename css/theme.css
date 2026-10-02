@@ -1,0 +1,130 @@
+/* ============================================================
+   Design tokens — University Management System
+   Palette: registrar's ledger — deep navy + antique gold on
+   warm paper, serif headings over a clean sans UI face.
+   ============================================================ */
+
+:root {
+  --ink: #16213e;        /* primary navy — sidebar, headings */
+  --ink-soft: #3c4a6b;   /* secondary navy — subheads, links */
+  --paper: #f7f5f0;      /* warm page background */
+  --paper-raised: #ffffff;
+  --line: #ddd8cc;       /* hairline rule on paper */
+  --line-dark: rgba(255, 255, 255, 0.14); /* hairline rule on navy */
+  --gold: #b8862b;       /* accent — active states, primary actions */
+  --gold-soft: #e4d2a8;
+  --text: #272420;
+  --text-muted: #6b6456;
+  --success: #2f6f4e;
+  --danger: #a23b2e;
+  --radius: 3px;
+
+  --font-display: 'Fraunces', Georgia, 'Times New Roman', serif;
+  --font-body: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+}
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  font-family: var(--font-body);
+  color: var(--text);
+  background: var(--paper);
+  -webkit-font-smoothing: antialiased;
+}
+
+h1, h2, h3, .font-display {
+  font-family: var(--font-display);
+  font-weight: 600;
+  color: var(--ink);
+  margin: 0;
+}
+
+a { color: var(--ink-soft); }
+
+/* ---- form controls (shared across every page) ---- */
+label {
+  display: block;
+  font-size: 0.78rem;
+  color: var(--text-muted);
+  margin-bottom: 0.3rem;
+  letter-spacing: 0.01em;
+}
+
+input, select {
+  width: 100%;
+  padding: 0.55rem 0.65rem;
+  margin-bottom: 1rem;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  font-size: 0.92rem;
+  font-family: var(--font-body);
+  background: var(--paper-raised);
+  color: var(--text);
+}
+
+input:focus, select:focus {
+  outline: 2px solid var(--gold);
+  outline-offset: 1px;
+  border-color: var(--gold);
+}
+
+button {
+  font-family: var(--font-body);
+  padding: 0.6rem 1.1rem;
+  background: var(--ink);
+  color: #fff;
+  border: none;
+  border-radius: var(--radius);
+  font-size: 0.88rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background 0.15s ease;
+}
+
+button:hover { background: var(--ink-soft); }
+button:disabled { background: #a8a398; cursor: not-allowed; }
+
+button.btn-gold { background: var(--gold); }
+button.btn-gold:hover { background: #9c7324; }
+
+.btn-small {
+  padding: 0.35rem 0.6rem;
+  font-size: 0.78rem;
+  border-radius: var(--radius);
+  border: none;
+  cursor: pointer;
+  margin-right: 0.3rem;
+  font-family: var(--font-body);
+}
+
+.btn-edit { background: var(--paper-raised); color: var(--ink); border: 1px solid var(--line); }
+.btn-delete { background: var(--paper-raised); color: var(--danger); border: 1px solid var(--line); }
+.btn-save { background: var(--ink); color: #fff; }
+
+/* ---- messages ---- */
+.error, .success {
+  font-size: 0.85rem;
+  padding: 0.6rem 0.8rem;
+  border-radius: var(--radius);
+  margin-bottom: 1rem;
+  display: none;
+}
+.error { background: #f8ece9; color: var(--danger); border: 1px solid #e4c9c3; }
+.success { background: #eaf2ec; color: var(--success); border: 1px solid #c9ddcf; }
+
+/* ---- ledger-style tables (flat, hairline rules, no shadows) ---- */
+table { width: 100%; border-collapse: collapse; margin-top: 1rem; font-size: 0.88rem; }
+th, td { text-align: left; padding: 0.65rem 0.7rem; border-bottom: 1px solid var(--line); }
+th {
+  color: var(--text-muted);
+  font-weight: 500;
+  font-size: 0.78rem;
+  letter-spacing: 0.02em;
+  border-bottom: 2px solid var(--ink);
+}
+tbody tr:hover { background: rgba(184, 134, 43, 0.05); }
+
+.inline-form { display: flex; gap: 0.6rem; align-items: flex-end; margin-bottom: 0.5rem; flex-wrap: wrap; }
+.inline-form input, .inline-form select { margin-bottom: 0; }
+.inline-form > div { flex: 1; min-width: 140px; }

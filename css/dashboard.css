@@ -1,0 +1,155 @@
+/* ============================================================
+   Shell layout — persistent sidebar + topbar, used on every
+   authenticated page. Loaded alongside theme.css.
+   ============================================================ */
+
+.shell { display: flex; min-height: 100vh; }
+
+/* ---- sidebar ---- */
+.sidebar {
+  width: 240px;
+  flex-shrink: 0;
+  background: var(--ink);
+  color: #fff;
+  padding: 1.5rem 0 1.5rem;
+  display: flex;
+  flex-direction: column;
+}
+
+.sidebar-brand {
+  font-family: var(--font-display);
+  font-size: 1.15rem;
+  color: #fff;
+  padding: 0 1.3rem 1.3rem;
+  border-bottom: 1px solid var(--line-dark);
+  margin-bottom: 0.75rem;
+  line-height: 1.3;
+}
+
+.sidebar-brand span {
+  display: block;
+  font-family: var(--font-body);
+  font-size: 0.7rem;
+  color: var(--gold-soft);
+  letter-spacing: 0.04em;
+  margin-top: 0.15rem;
+}
+
+.sidebar-group {
+  padding: 0.9rem 1.3rem 0.3rem;
+  font-size: 0.7rem;
+  color: #8891ab;
+  letter-spacing: 0.03em;
+}
+
+.sidebar-nav a {
+  display: block;
+  padding: 0.5rem 1.3rem;
+  color: #c7cde0;
+  text-decoration: none;
+  font-size: 0.87rem;
+  border-left: 3px solid transparent;
+}
+
+.sidebar-nav a:hover { background: rgba(255,255,255,0.04); color: #fff; }
+
+.sidebar-nav a.active {
+  color: #fff;
+  background: rgba(184, 134, 43, 0.14);
+  border-left-color: var(--gold);
+}
+
+.sidebar-footer {
+  margin-top: auto;
+  padding: 1rem 1.3rem 0;
+  border-top: 1px solid var(--line-dark);
+}
+
+.sidebar-user {
+  font-size: 0.82rem;
+  color: #fff;
+  margin-bottom: 0.15rem;
+}
+
+.sidebar-role {
+  font-size: 0.72rem;
+  color: #8891ab;
+  margin-bottom: 0.7rem;
+  text-transform: capitalize;
+}
+
+.sidebar-footer button {
+  width: 100%;
+  background: transparent;
+  border: 1px solid var(--line-dark);
+  color: #c7cde0;
+  font-size: 0.8rem;
+}
+.sidebar-footer button:hover { background: rgba(255,255,255,0.06); color: #fff; }
+
+/* ---- main content area ---- */
+.main {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+}
+
+.topbar {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  padding: 1.5rem 2.2rem 1rem;
+  border-bottom: 1px solid var(--line);
+}
+
+.topbar h1 { font-size: 1.4rem; }
+.topbar .topbar-sub { font-size: 0.82rem; color: var(--text-muted); margin-top: 0.2rem; }
+
+.content { padding: 1.5rem 2.2rem 3rem; max-width: 1040px; }
+
+/* ---- ledger-style stat blocks for the dashboard home ---- */
+.stat-row {
+  display: flex;
+  flex-wrap: wrap;
+  border-top: 1px solid var(--line);
+  border-bottom: 1px solid var(--line);
+  margin: 1.2rem 0 2rem;
+}
+
+.stat-block {
+  flex: 1;
+  min-width: 140px;
+  padding: 1.1rem 1.3rem;
+  border-right: 1px solid var(--line);
+}
+.stat-block:last-child { border-right: none; }
+
+.stat-number {
+  font-family: var(--font-display);
+  font-size: 2.1rem;
+  color: var(--ink);
+  line-height: 1;
+}
+
+.stat-label {
+  font-size: 0.78rem;
+  color: var(--text-muted);
+  margin-top: 0.4rem;
+}
+
+.stat-block a { text-decoration: none; display: block; }
+.stat-block a:hover .stat-number { color: var(--gold); }
+
+/* responsive: collapse sidebar on narrow screens */
+@media (max-width: 760px) {
+  .shell { flex-direction: column; }
+  .sidebar { width: 100%; flex-direction: row; flex-wrap: wrap; padding: 1rem; }
+  .sidebar-brand { border: none; padding: 0 1rem 0 0; margin: 0; }
+  .sidebar-group { display: none; }
+  .sidebar-nav { display: flex; flex-wrap: wrap; }
+  .sidebar-nav a { padding: 0.4rem 0.6rem; border-left: none; border-bottom: 2px solid transparent; }
+  .sidebar-nav a.active { border-left: none; border-bottom-color: var(--gold); }
+  .sidebar-footer { margin-top: 0.5rem; border: none; padding: 0; width: 100%; }
+  .topbar, .content { padding-left: 1.2rem; padding-right: 1.2rem; }
+}
