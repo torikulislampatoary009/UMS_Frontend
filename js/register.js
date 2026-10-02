@@ -1,14 +1,13 @@
+// renderShell() rebuilds document.body via innerHTML, so it must run
+// before any getElementById calls below. It also handles the "must be
+// logged in" redirect itself — the server still enforces admin-only via
+// verifyToken + requireRole('admin') regardless of what this page shows.
+renderShell({ active: 'register', title: 'Create User', subtitle: 'Admin-only: create faculty or student accounts' });
+
 const form = document.getElementById('registerForm');
 const errorMsg = document.getElementById('errorMsg');
 const successMsg = document.getElementById('successMsg');
 const registerBtn = document.getElementById('registerBtn');
-
-// Guard: if there's no token at all, send them to login first.
-// (This is a UX convenience only — the real enforcement happens
-// server-side via verifyToken + requireRole('admin').)
-if (!localStorage.getItem('token')) {
-  window.location.href = 'login.html';
-}
 
 form.addEventListener('submit', async (e) => {
   e.preventDefault();
@@ -26,7 +25,6 @@ form.addEventListener('submit', async (e) => {
 
   try {
     const result = await registerRequest({ name, email, password, role });
-
     successMsg.textContent = `Account created: ${result.data.name} (${result.data.role})`;
     successMsg.style.display = 'block';
     form.reset();

@@ -1,3 +1,7 @@
+// renderShell() rebuilds document.body via innerHTML, so it must run
+// before any getElementById calls below.
+renderShell({ active: 'attendance', title: 'Attendance', subtitle: 'Mark a section\'s roster for a given date' });
+
 const errorMsg = document.getElementById('errorMsg');
 const successMsg = document.getElementById('successMsg');
 const tableBody = document.getElementById('rosterTableBody');
@@ -5,9 +9,6 @@ const filterForm = document.getElementById('filterForm');
 const sectionSelect = document.getElementById('sectionSelect');
 const dateInput = document.getElementById('dateInput');
 
-if (!localStorage.getItem('token')) {
-  window.location.href = 'login.html';
-}
 
 function showError(message) {
   successMsg.style.display = 'none';

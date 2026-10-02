@@ -50,7 +50,9 @@ function renderShell({ active, title, subtitle }) {
     return `${labelHtml}<div class="sidebar-nav">${itemsHtml}</div>`;
   }).join('');
 
-  const adminLink = isAdmin ? `<div class="sidebar-group">Admin</div><div class="sidebar-nav"><a href="register.html">Create User</a></div>` : '';
+  const adminLink = isAdmin
+    ? `<div class="sidebar-group">Admin</div><div class="sidebar-nav"><a href="register.html" class="${active === 'register' ? 'active' : ''}">Create User</a></div>`
+    : '';
 
   const existingBody = document.body.innerHTML;
 
