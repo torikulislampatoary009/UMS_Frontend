@@ -210,3 +210,15 @@ async function markExamGradeRequest(examId, { enrollmentId, obtainedMarks }) {
 async function getGradeSummary(enrollmentId) {
   return apiRequest(`/exams/summary/${enrollmentId}`, 'GET');
 }
+
+
+async function forgotPasswordRequest(email){ return apiRequest('/auth/forgot-password','POST',{email}); }
+async function resetPasswordRequest(token,newPassword){ return apiRequest('/auth/reset-password','POST',{token,newPassword}); }
+async function getMe(){ return apiRequest('/auth/me','GET'); }
+async function changePasswordRequest(currentPassword,newPassword){ return apiRequest('/auth/change-password','POST',{currentPassword,newPassword}); }
+async function getUniversitySummary(){ return apiRequest('/university/summary','GET'); }
+async function getUniversityModule(module){ return apiRequest(`/university/${module}`,'GET'); }
+async function createUniversityRecord(module,payload){ return apiRequest(`/university/${module}`,'POST',payload); }
+async function updateUniversityRecord(module,id,payload){ return apiRequest(`/university/${module}/${id}`,'PUT',payload); }
+async function deleteUniversityRecord(module,id){ return apiRequest(`/university/${module}/${id}`,'DELETE'); }
+async function getAuditLogs(){ return apiRequest('/university/audit-logs','GET'); }

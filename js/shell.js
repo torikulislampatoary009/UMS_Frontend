@@ -34,10 +34,10 @@ const NAV_GROUPS = [
 
 function renderShell({ active, title, subtitle }) {
   const token = localStorage.getItem('token');
-  if (!token) {
-    window.location.href = 'login.html';
-    return;
-  }
+  if (!token) { window.location.href = 'login.html'; return false; }
+  getMe().then(me => localStorage.setItem('user', JSON.stringify(me.data))).catch(() => {
+    localStorage.removeItem('token'); localStorage.removeItem('user'); window.location.href='login.html';
+  });
 
   const user = JSON.parse(localStorage.getItem('user') || '{}');
   const isAdmin = user.role === 'admin';
@@ -59,7 +59,8 @@ function renderShell({ active, title, subtitle }) {
   document.body.innerHTML = `
     <div class="shell">
       <aside class="sidebar">
-        <div class="sidebar-brand">University MS<span>Registrar's Office</span></div>
+        <div class="sidebar-brand">University Management System<span>Registrar's Office</span></div>
+        <button class="mobile-menu" id="mobileMenuBtn" type="button">Menu</button>
         ${groupsHtml}
         ${adminLink}
         <div class="sidebar-footer">
@@ -82,6 +83,9 @@ function renderShell({ active, title, subtitle }) {
 
   document.getElementById('shellContent').innerHTML = existingBody;
 
+  document.getElementById('mobileMenuBtn').addEventListener('click', () => {
+    document.querySelectorAll('.sidebar-nav').forEach(n => n.classList.toggle('mobile-open'));
+  });
   document.getElementById('shellLogoutBtn').addEventListener('click', () => {
     localStorage.removeItem('token');
     localStorage.removeItem('user');
