@@ -153,3 +153,37 @@
   .sidebar-footer { margin-top: 0.5rem; border: none; padding: 0; width: 100%; }
   .topbar, .content { padding-left: 1.2rem; padding-right: 1.2rem; }
 }
+
+/* World-class responsive data UI */
+.content { width:100%; }
+.content-inner { width:100%; }
+.data-table-wrap { width:100%; overflow-x:auto; -webkit-overflow-scrolling:touch; }
+.data-table-wrap table { min-width:720px; }
+.form-grid { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:1rem; }
+.form-grid > div { min-width:0; }
+.page-toolbar { display:flex; gap:.75rem; align-items:center; justify-content:space-between; flex-wrap:wrap; margin-bottom:1rem; }
+.card-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(210px,1fr)); gap:1rem; }
+.module-card { display:block; text-decoration:none; background:var(--paper-raised); border:1px solid var(--line); padding:1.1rem; border-radius:8px; transition:.15s ease; }
+.module-card:hover { transform:translateY(-1px); border-color:var(--gold); }
+.module-card h3 { font-family:var(--font-body); font-size:1rem; margin-bottom:.35rem; }
+.module-card p { color:var(--text-muted); font-size:.82rem; margin:0; }
+.badge { display:inline-flex; align-items:center; padding:.22rem .55rem; border-radius:999px; background:#eef1f5; color:var(--ink-soft); font-size:.72rem; }
+.mobile-menu { display:none; }
+@media (max-width:760px){
+ .sidebar { position:sticky; top:0; z-index:20; display:block; padding:.75rem; }
+ .sidebar-brand { padding:.25rem .5rem .7rem; }
+ .sidebar-nav { display:none; }
+ .sidebar-nav.mobile-open { display:block; }
+ .sidebar-nav a { padding:.6rem .75rem; border-radius:5px; }
+ .mobile-menu { display:block; position:absolute; right:.75rem; top:.75rem; width:auto; padding:.45rem .65rem; }
+ .sidebar-footer { margin-top:.5rem; }
+ .topbar { padding:1rem; }
+ .topbar h1 { font-size:1.15rem; }
+ .content { padding:1rem .75rem 2rem; max-width:none; }
+ .form-grid { grid-template-columns:1fr; gap:.65rem; }
+ .inline-form { display:grid; grid-template-columns:1fr; }
+ .inline-form > div { min-width:0; }
+ .stat-block { min-width:50%; border-right:none; border-bottom:1px solid var(--line); }
+ table { font-size:.8rem; }
+ th,td { padding:.55rem .5rem; }
+}

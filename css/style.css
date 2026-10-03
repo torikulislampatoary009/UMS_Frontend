@@ -80,3 +80,11 @@ th { color: #555; font-weight: 600; }
 
 nav.topnav { margin-bottom: 1rem; font-size: 0.85rem; }
 nav.topnav a { margin-right: 1rem; color: #2563eb; text-decoration: none; }
+
+.auth-card { width:min(430px,calc(100% - 2rem)); padding:2rem; }
+.auth-brand { font-weight:700; letter-spacing:.05em; color:#16213e; font-size:.9rem; margin-bottom:2rem; }
+.auth-brand span { display:block; font-weight:400; letter-spacing:0; color:#6b6456; margin-top:.35rem; font-size:.75rem; }
+.auth-sub { color:#6b6456; font-size:.86rem; margin-top:-.8rem; margin-bottom:1.3rem; }
+.auth-links { display:flex; justify-content:center; gap:.5rem; flex-wrap:wrap; margin-top:1.1rem; font-size:.8rem; }
+.auth-links a { color:#16213e; }
+@media(max-width:480px){.auth-card{padding:1.3rem}.card-wide{width:calc(100% - 2rem)}}
