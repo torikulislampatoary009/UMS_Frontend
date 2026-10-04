@@ -1,1 +1,27 @@
-const f=document.getElementById('f'),msg=document.getElementById('msg'),err=document.getElementById('err');f.addEventListener('submit',async e=>{e.preventDefault();msg.style.display='none';err.style.display='none';try{const r=await forgotPasswordRequest(document.getElementById('email').value.trim());msg.textContent=r.message;msg.style.display='block';f.reset();}catch(x){err.textContent=x.message;err.style.display='block';}});
+const form = document.getElementById('forgotForm');
+const errorMsg = document.getElementById('errorMsg');
+const successMsg = document.getElementById('successMsg');
+const submitBtn = document.getElementById('submitBtn');
+
+form.addEventListener('submit', async (e) => {
+  e.preventDefault();
+  errorMsg.style.display = 'none';
+  successMsg.style.display = 'none';
+
+  const email = document.getElementById('email').value.trim();
+  submitBtn.disabled = true;
+  submitBtn.textContent = 'Sending...';
+
+  try {
+    const result = await forgotPasswordRequest(email);
+    successMsg.textContent = result.data.message;
+    successMsg.style.display = 'block';
+    form.reset();
+  } catch (err) {
+    errorMsg.textContent = err.message;
+    errorMsg.style.display = 'block';
+  } finally {
+    submitBtn.disabled = false;
+    submitBtn.textContent = 'Send Reset Link';
+  }
+});

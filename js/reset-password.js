@@ -1,1 +1,44 @@
-const f=document.getElementById('f'),msg=document.getElementById('msg'),err=document.getElementById('err');const token=new URLSearchParams(location.search).get('token');f.addEventListener('submit',async e=>{e.preventDefault();msg.style.display='none';err.style.display='none';if(!token){err.textContent='Missing reset token.';err.style.display='block';return}const p1=document.getElementById('p1').value,p2=document.getElementById('p2').value;if(p1!==p2){err.textContent='Passwords do not match.';err.style.display='block';return}try{const r=await resetPasswordRequest(token,p1);msg.textContent=r.message;msg.style.display='block';f.style.display='none';}catch(x){err.textContent=x.message;err.style.display='block';}});
+const form = document.getElementById('resetForm');
+const errorMsg = document.getElementById('errorMsg');
+const successMsg = document.getElementById('successMsg');
+const submitBtn = document.getElementById('submitBtn');
+
+const urlParams = new URLSearchParams(window.location.search);
+const token = urlParams.get('token');
+
+if (!token) {
+  errorMsg.textContent = 'No reset token found in the link. Request a new one from the forgot password page.';
+  errorMsg.style.display = 'block';
+  form.style.display = 'none';
+}
+
+form.addEventListener('submit', async (e) => {
+  e.preventDefault();
+  errorMsg.style.display = 'none';
+  successMsg.style.display = 'none';
+
+  const newPassword = document.getElementById('newPassword').value;
+  const confirmPassword = document.getElementById('confirmPassword').value;
+
+  if (newPassword !== confirmPassword) {
+    errorMsg.textContent = 'Passwords do not match.';
+    errorMsg.style.display = 'block';
+    return;
+  }
+
+  submitBtn.disabled = true;
+  submitBtn.textContent = 'Updating...';
+
+  try {
+    const result = await resetPasswordRequest(token, newPassword);
+    successMsg.textContent = `${result.data.message} Redirecting to sign in...`;
+    successMsg.style.display = 'block';
+    form.style.display = 'none';
+    setTimeout(() => { window.location.href = 'login.html'; }, 2000);
+  } catch (err) {
+    errorMsg.textContent = err.message;
+    errorMsg.style.display = 'block';
+    submitBtn.disabled = false;
+    submitBtn.textContent = 'Update Password';
+  }
+});

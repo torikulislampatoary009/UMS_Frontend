@@ -211,14 +211,23 @@ async function getGradeSummary(enrollmentId) {
   return apiRequest(`/exams/summary/${enrollmentId}`, 'GET');
 }
 
+async function getFeeStructures() { return apiRequest('/fee-structures', 'GET'); }
+async function createFeeStructureRequest(payload) { return apiRequest('/fee-structures', 'POST', payload); }
+async function updateFeeStructureRequest(id, payload) { return apiRequest(`/fee-structures/${id}`, 'PUT', payload); }
+async function deleteFeeStructureRequest(id) { return apiRequest(`/fee-structures/${id}`, 'DELETE'); }
 
-async function forgotPasswordRequest(email){ return apiRequest('/auth/forgot-password','POST',{email}); }
-async function resetPasswordRequest(token,newPassword){ return apiRequest('/auth/reset-password','POST',{token,newPassword}); }
-async function getMe(){ return apiRequest('/auth/me','GET'); }
-async function changePasswordRequest(currentPassword,newPassword){ return apiRequest('/auth/change-password','POST',{currentPassword,newPassword}); }
-async function getUniversitySummary(){ return apiRequest('/university/summary','GET'); }
-async function getUniversityModule(module){ return apiRequest(`/university/${module}`,'GET'); }
-async function createUniversityRecord(module,payload){ return apiRequest(`/university/${module}`,'POST',payload); }
-async function updateUniversityRecord(module,id,payload){ return apiRequest(`/university/${module}/${id}`,'PUT',payload); }
-async function deleteUniversityRecord(module,id){ return apiRequest(`/university/${module}/${id}`,'DELETE'); }
-async function getAuditLogs(){ return apiRequest('/university/audit-logs','GET'); }
+async function getInvoices() { return apiRequest('/invoices', 'GET'); }
+async function getInvoicesForStudentRequest(studentId) { return apiRequest(`/invoices/student/${studentId}`, 'GET'); }
+async function getInvoiceDetail(id) { return apiRequest(`/invoices/${id}`, 'GET'); }
+async function generateInvoiceRequest(payload) { return apiRequest('/invoices', 'POST', payload); }
+async function recordPaymentRequest(invoiceId, payload) { return apiRequest(`/invoices/${invoiceId}/payments`, 'POST', payload); }
+async function deleteInvoiceRequest(id) { return apiRequest(`/invoices/${id}`, 'DELETE'); }
+
+async function forgotPasswordRequest(email) { return apiRequest('/auth/forgot-password', 'POST', { email }); }
+async function resetPasswordRequest(token, newPassword) { return apiRequest('/auth/reset-password', 'POST', { token, newPassword }); }
+
+async function getMyStudentProfile() { return apiRequest('/students/me', 'GET'); }
+async function getMyFacultyProfile() { return apiRequest('/faculty/me', 'GET'); }
+async function getMyEnrollments() { return apiRequest('/enrollments/mine', 'GET'); }
+async function getMyInvoices() { return apiRequest('/invoices/mine', 'GET'); }
+async function getMySections() { return apiRequest('/sections/mine', 'GET'); }
