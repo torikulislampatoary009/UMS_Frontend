@@ -128,10 +128,3 @@ tbody tr:hover { background: rgba(184, 134, 43, 0.05); }
 .inline-form { display: flex; gap: 0.6rem; align-items: flex-end; margin-bottom: 0.5rem; flex-wrap: wrap; }
 .inline-form input, .inline-form select { margin-bottom: 0; }
 .inline-form > div { flex: 1; min-width: 140px; }
-
-@media(max-width:760px){
-  table { display:block; overflow-x:auto; white-space:nowrap; -webkit-overflow-scrolling:touch; }
-  input,select,textarea,button { max-width:100%; }
-  .inline-form button { width:100%!important; }
-}
-textarea{width:100%;padding:.55rem .65rem;border:1px solid var(--line);border-radius:var(--radius);font:inherit;background:var(--paper-raised);color:var(--text);}
