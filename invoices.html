@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>UMS - Invoices & Payments</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:wght@500;600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/theme.css" />
+  <link rel="stylesheet" href="css/dashboard.css" />
+</head>
+<body>
+  <div class="content-inner">
+    <div class="error" id="errorMsg"></div>
+    <div class="success" id="successMsg"></div>
+
+    <form id="generateForm" class="inline-form">
+      <div>
+        <label for="genStudent">Student</label>
+        <select id="genStudent" required></select>
+      </div>
+      <div>
+        <label for="genSemester">Semester</label>
+        <select id="genSemester" required></select>
+      </div>
+      <div>
+        <label for="genDueDate">Due Date</label>
+        <input type="date" id="genDueDate" required />
+      </div>
+      <button type="submit" style="width:auto; padding:0.6rem 1rem;">Generate Invoice</button>
+    </form>
+    <p style="font-size:0.8rem; color:var(--text-muted);">
+      Sums every fee line defined for the student's program and the selected semester. Running it again for the
+      same student + semester refreshes the existing invoice instead of creating a duplicate.
+    </p>
+
+    <table id="invoiceTable">
+      <thead><tr><th>Student</th><th>Semester</th><th>Total</th><th>Paid</th><th>Balance</th><th>Status</th><th>Due</th><th>Actions</th></tr></thead>
+      <tbody id="invoiceTableBody"></tbody>
+    </table>
+
+    <div id="detailSection" style="display:none; margin-top:1.5rem; border-top:1px solid var(--line); padding-top:1rem;">
+      <h2 id="detailTitle" style="font-size:1.05rem; font-family: var(--font-body); font-weight: 600;"></h2>
+
+      <form id="paymentForm" class="inline-form">
+        <div>
+          <label for="payAmount">Amount Paid</label>
+          <input type="number" id="payAmount" min="0.01" step="0.01" required />
+        </div>
+        <div>
+          <label for="payDate">Date</label>
+          <input type="date" id="payDate" required />
+        </div>
+        <div>
+          <label for="payMethod">Method</label>
+          <select id="payMethod" required>
+            <option value="cash">Cash</option>
+            <option value="bank_transfer">Bank Transfer</option>
+            <option value="card">Card</option>
+            <option value="mobile_banking">Mobile Banking</option>
+            <option value="other">Other</option>
+          </select>
+        </div>
+        <div>
+          <label for="payNotes">Notes</label>
+          <input type="text" id="payNotes" placeholder="optional" />
+        </div>
+        <button type="submit" style="width:auto; padding:0.6rem 1rem;" class="btn-gold">Record Payment</button>
+      </form>
+
+      <table id="paymentTable">
+        <thead><tr><th>Date</th><th>Amount</th><th>Method</th><th>Received By</th><th>Notes</th></tr></thead>
+        <tbody id="paymentTableBody"></tbody>
+      </table>
+    </div>
+  </div>
+
+  <script src="js/api.js"></script>
+  <script src="js/shell.js"></script>
+  <script src="js/invoices.js"></script>
+</body>
+</html>
