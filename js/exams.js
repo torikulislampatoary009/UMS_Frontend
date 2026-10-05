@@ -28,7 +28,7 @@ function showSuccess(message) {
 }
 
 async function loadSectionOptions() {
-  const result = await getSections();
+  const result = JSON.parse(localStorage.getItem('user')||'{}').role === 'faculty' ? await getMySections() : await getSections();
   sectionSelect.innerHTML = result.data
     .map((s) => `<option value="${s.id}">${s.course_code} - Sec ${s.section_name} (${s.semester_name})</option>`)
     .join('');
