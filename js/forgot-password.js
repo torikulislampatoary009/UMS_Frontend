@@ -8,7 +8,7 @@ form.addEventListener('submit', async (e) => {
   errorMsg.style.display = 'none';
   successMsg.style.display = 'none';
 
-  const email = document.getElementById('email').value.trim().toLowerCase();
+  const email = document.getElementById('email').value.trim();
   submitBtn.disabled = true;
   submitBtn.textContent = 'Sending...';
 
